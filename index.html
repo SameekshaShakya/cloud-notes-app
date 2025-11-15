@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cloud Notes App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="auth-section">
+    <h2>Login to Cloud Notes</h2>
+    <input id="email" type="email" placeholder="Email">
+    <input id="password" type="password" placeholder="Password">
+    <button id="loginBtn">Login</button>
+    <button id="signupBtn">Sign Up</button>
+</div>
+
+<div id="app-section" style="display:none;">
+    <button id="logoutBtn">Logout</button>
+    <h2>Your Cloud Documents</h2>
+
+    <button id="newDoc">+ New Document</button>
+    <ul id="documentsList"></ul>
+
+    <h2>Editor</h2>
+    <input id="docTitle" placeholder="Title">
+    <textarea id="docContent" placeholder="Start typing..."></textarea>
+</div>
+
+<!-- Firebase COMPAT SDKs -->
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+
+<!-- Your script MUST be last -->
+<script src="script.js"></script>
+</body>
+</html>
+
