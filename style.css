@@ -1,19 +1,356 @@
+/* ---------------- GLOBAL RESET ---------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Roboto, sans-serif;
+}
+
 body {
-    font-family: Arial;
-    margin: 40px;
+  background: #f5f7fa;
+  color: #222;
 }
-input, button, textarea {
-    display: block;
-    margin: 10px 0;
-    padding: 10px;
+
+/* ---------------- LOGIN STYLES ---------------- */
+.center-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
-textarea {
-    width: 90%;
-    height: 300px;
+
+.login-box {
+  width: 380px;
+  background: #ffffff;
+  padding: 35px;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
 }
-#documentsList li {
-    cursor: pointer;
-    margin: 5px 0;
-    padding: 5px;
-    background: #eee;
+
+.logo-top {
+  width: 90px;
+  margin-bottom: 10px;
 }
+
+.box-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #0b79d0;
+  margin-bottom: 6px;
+}
+
+.box-sub {
+  color: #6d6d6d;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: #fafafa;
+  font-size: 15px;
+}
+
+input:focus {
+  outline: 2px solid #0b79d0;
+}
+
+/* ---------------- BUTTON STYLES ---------------- */
+.btn {
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  background: #0b79d0;
+  color: #fff;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  background: #095ca3;
+}
+
+.btn.ghost {
+  background: white;
+  color: #0b79d0;
+  border: 2px solid #0b79d0;
+}
+
+.btn.ghost:hover {
+  background: #e9f4ff;
+}
+
+.btn.danger {
+  background: #d64545;
+}
+
+.btn.full {
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* ---------------- APP LAYOUT ---------------- */
+.app {
+  display: flex;
+  height: 100vh;
+  padding: 12px;
+  gap: 15px;
+}
+
+/* ---------------- SIDEBAR ---------------- */
+.sidebar {
+  width: 260px;
+  background: #fff;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.logo-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sidebar-logo {
+  width: 38px;
+}
+
+.profile-area {
+  position: relative;
+}
+
+.small-btn {
+  padding: 7px 10px;
+  border-radius: 6px;
+  background: #eef7ff;
+  border: 1px solid #0b79d0;
+  color: #0b79d0;
+  cursor: pointer;
+}
+
+.profile-menu {
+  background: #fff;
+  border-radius: 8px;
+  position: absolute;
+  top: 32px;
+  right: 0;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+  width: 160px;
+  overflow: hidden;
+}
+
+.profile-item {
+  padding: 12px;
+  cursor: pointer;
+}
+
+.profile-item:hover {
+  background: #eee;
+}
+
+.profile-item.danger {
+  color: red;
+}
+
+.notes-list {
+  margin: 10px 0;
+  padding: 0;
+  list-style: none;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.notes-list li {
+  padding: 10px;
+  border-radius: 8px;
+  background: #f1f7ff;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.notes-list li:hover {
+  background: #e3efff;
+}
+
+.notes-list li.active {
+  background: #0b79d0;
+  color: white;
+  font-weight: bold;
+}
+
+/* ---------------- EDITOR ---------------- */
+.editor-area {
+  flex: 1;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: bold;
+  border: none;
+  border-bottom: 1px solid #eee;
+  padding: 6px;
+  margin-bottom: 12px;
+}
+
+.editor {
+  flex: 1;
+  border: none;
+  border-radius: 8px;
+  padding: 14px;
+  background: #fcfcfc;
+  resize: none;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* ---------------- MODAL ---------------- */
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-box {
+  width: 380px;
+  background: #fff;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* ---------------- INSTALL POPUP ---------------- */
+.install-popup {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2000;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.install-box {
+  width: 320px;
+  background: #fff;
+  padding: 25px;
+  border-radius: 14px;
+  text-align: center;
+  animation: pop 0.2s ease;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+}
+
+.install-logo {
+  width: 90px;
+  margin-bottom: 12px;
+}
+
+@keyframes pop {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* ---------------- OFFLINE BADGE ---------------- */
+.offline-badge {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #16a34a;
+  color: white;
+  padding: 10px 16px;
+  font-weight: 600;
+  border-radius: 20px;
+  z-index: 3000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------------- UPDATE POPUP ---------------- */
+.update-popup {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 3000;
+}
+
+.update-box {
+  padding: 15px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+  text-align: center;
+}
+
+.update-box p {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+#webSplash {
+  position: fixed;
+  inset: 0;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.splash-logo {
+  width: 140px;
+  animation: fadeUp 1.2s ease-in-out forwards;
+}
+
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+
+
+
+

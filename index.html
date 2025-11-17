@@ -1,39 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Cloud Notes App</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-<div id="auth-section">
-    <h2>Login to Cloud Notes</h2>
+  <title>KeepSafe - Secure Notes</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="/icons/icon-192.png" type="image/png">
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0b79d0">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="webSplash">
+  <img src="icons/icon-192.png" class="splash-logo">
+</div>
+
+
+<!-- ===== INSTALL POPUP ===== -->
+<div id="installPopup" class="install-popup hidden">
+  <div class="install-box">
+    <img src="/icons/icon-192.png" class="popup-logo">
+
+    <h2>Install KeepSafe</h2>
+    <p>Use the app offline & access notes instantly.</p>
+
+    <button id="installBtn" class="btn full">Install App</button>
+    <button id="closeInstall" class="btn ghost full">Not Now</button>
+  </div>
+</div>
+
+<!-- ===== LOGIN ===== -->
+<div id="auth-section" class="center-screen">
+  <div class="box login-box">
+
+    <img src="/icons/icon-192.png" class="logo-top">
+
+    <h2 class="box-title">Keep Safe</h2>
+    <p class="box-sub">Access your notes anywhere, anytime.</p>
+
     <input id="email" type="email" placeholder="Email">
     <input id="password" type="password" placeholder="Password">
-    <button id="loginBtn">Login</button>
-    <button id="signupBtn">Sign Up</button>
+
+    <div class="row">
+      <button id="loginBtn" class="btn">Login</button>
+      <button id="signupBtn" class="btn ghost">New User</button>
+    </div>
+  </div>
 </div>
 
-<div id="app-section" style="display:none;">
-    <button id="logoutBtn">Logout</button>
-    <h2>Your Cloud Documents</h2>
+<!-- ===== APP UI ===== -->
+<div id="app-section" class="app" style="display:none;">
 
-    <button id="newDoc">+ New Document</button>
-    <ul id="documentsList"></ul>
+  <!-- Sidebar -->
+  <aside class="sidebar box">
+    <div class="sidebar-top">
 
-    <h2>Editor</h2>
-    <input id="docTitle" placeholder="Title">
-    <textarea id="docContent" placeholder="Start typing..."></textarea>
+      <div class="logo-row">
+        <img src="/icons/icon-192.png" class="sidebar-logo">
+        <strong>Your Notes</strong>
+      </div>
+
+      <div class="profile-area">
+        <button id="profileBtn" class="small-btn">Profile ▾</button>
+        <div id="profileMenu" class="profile-menu hidden">
+          <div id="changePassBtn" class="profile-item">Change Password</div>
+          <div id="signoutBtn" class="profile-item danger">Logout</div>
+        </div>
+      </div>
+    </div>
+
+    <button id="newDoc" class="btn full">+ New Note</button>
+
+    <ul id="documentsList" class="notes-list"></ul>
+
+    <div class="sidebar-actions">
+      <button id="deleteBtn" class="btn danger full">Delete note</button>
+      <button id="downloadBtn" class="btn full">Download</button>
+      <button id="shareBtn" class="btn full ghost">Share</button>
+      <button id="showInstall" class="btn full ghost install-btn">Install App</button>
+    </div>
+  </aside>
+
+  <!-- Editor -->
+  <main class="editor-area box">
+    <input id="docTitle" class="title" placeholder="Note title">
+    <textarea id="docContent" class="editor" placeholder="Start typing your note..."></textarea>
+  </main>
 </div>
 
-<!-- Firebase COMPAT SDKs -->
+<!-- ===== CHANGE PASSWORD MODAL ===== -->
+<div id="changePasswordModal" class="modal hidden">
+  <div class="modal-box">
+    <h3>Change Password</h3>
+
+    <input id="currentPassword" type="password" placeholder="Current password">
+    <input id="newPassword" type="password" placeholder="New password">
+    <input id="confirmPassword" type="password" placeholder="Confirm new password">
+
+    <div class="row">
+      <button id="savePassBtn" class="btn">Save</button>
+      <button id="cancelPassBtn" class="btn ghost">Cancel</button>
+    </div>
+
+    <p id="passMsg" class="muted small"></p>
+  </div>
+</div>
+
+<!-- Firebase SDK -->
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
 
-<!-- Your script MUST be last -->
 <script src="script.js"></script>
+
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/sw.js");
+  }
+</script>
+
 </body>
 </html>
+
+
+
+
+
+
+
+
 
